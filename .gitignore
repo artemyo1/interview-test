@@ -1,0 +1,22 @@
+# Локальное Python-окружение и кеши
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Локальные переменные окружения
+.env
+.env.*
+!.env.example
+
+# Сгенерированные модели и результаты обучения
+artifacts/
+catboost_info/
+
+# Логи
+*.log
+
+# Локальные служебные файлы
+.DS_Store
