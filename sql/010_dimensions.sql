@@ -34,3 +34,27 @@ SET
     region = EXCLUDED.region,
     latitude = EXCLUDED.latitude,
     longitude = EXCLUDED.longitude;
+
+INSERT INTO core.dim_body_types (
+    body_type_id,
+    body_type_name,
+    std_id,
+    body_group
+)
+SELECT
+    id,
+    name,
+    std_id,
+    CASE std_id
+        WHEN 56 THEN 'Тент'
+        WHEN 4 THEN 'Рефрижератор'
+        WHEN 2 THEN 'Изотерм'
+        WHEN 15 THEN 'Борт'
+        ELSE 'Прочие'
+    END
+FROM raw.body_types
+ON CONFLICT (body_type_id) DO UPDATE
+SET
+    body_type_name = EXCLUDED.body_type_name,
+    std_id = EXCLUDED.std_id,
+    body_group = EXCLUDED.body_group;

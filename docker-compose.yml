@@ -2,9 +2,9 @@ services:
   postgres:
     image: postgres:17
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME:-deals_bigdata}
+      POSTGRES_USER: ${DB_USER:-logistics}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-logistics}
     ports:
       - "127.0.0.1:${DB_PORT:-5432}:5432"
     volumes:
@@ -25,12 +25,12 @@ services:
     environment:
       DB_HOST: postgres
       DB_PORT: "5432"
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      AS_OF: ${AS_OF}
-      N_PRICES: ${N_PRICES}
-      ML_SEED: ${ML_SEED}
+      DB_NAME: ${DB_NAME:-deals_bigdata}
+      DB_USER: ${DB_USER:-logistics}
+      DB_PASSWORD: ${DB_PASSWORD:-logistics}
+      AS_OF: ${AS_OF:-2026-10-26}
+      N_PRICES: ${N_PRICES:-300000}
+      ML_SEED: ${ML_SEED:-42}
       MODEL_DIR: /app/artifacts
     depends_on:
       postgres:

@@ -25,4 +25,4 @@ COPY ml/ ./ml/
 COPY sql/ ./sql/
 COPY tests/ ./tests/
 
-CMD ["python", "main.py", "check-config"]
+CMD ["python", "main.py", "run"]
